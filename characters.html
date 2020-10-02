@@ -79,12 +79,15 @@
 }
 
 h1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     font-family: sans-serif;
     font-family: 'Permanent Marker', cursive;
     font-size: 4em;
     font-weight: 600;
-    margin: 30px;
-}
+    margin-left: 30px;
+  }
 
 #root {
     display:flex;
@@ -112,6 +115,13 @@ h1 {
 body {
     background-color: lightgrey;
 }
+
+#searchbar {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    margin-right: 20px;
+  }
 </style>
 
 <body>
@@ -132,7 +142,19 @@ body {
         </div>
       </div>
 
-      <h1>Epic Seven Project</h1>
+      <h1>Epic Seven Project
+        <div id="searchbar">
+          <input type="text" id="search" placeholder="Search google for...">
+          <input type="button" id="click" value="Search!" />
+      
+          <script>
+            document.getElementById('click').onclick = function () {
+              var box = document.getElementById('search');
+              window.location.href = 'http://www.google.com/search?q=' + escape(box.value);
+            }
+          </script>
+        </div>
+      </h1>
 
       <div id="root">
           <aside id="left">
