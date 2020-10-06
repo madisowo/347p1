@@ -9,6 +9,12 @@
 
 <!-- Nav Bar taken made with help from https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp -->
 <style>
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
   /* Navbar container */
   .navbar {
     overflow: hidden;
@@ -84,47 +90,70 @@
 
   h1 {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     font-family: sans-serif;
     font-family: 'Permanent Marker', cursive;
     font-size: 4em;
     font-weight: 600;
-    margin-left: 30px;
+    margin-left: 110px;
+  }
+
+  #rhead {
+    width: 20%;
   }
 
   #root {
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
     height: 100vh;
   }
 
-  #left {
-    background-color: lightgrey;
-    flex-grow: 1;
-  }
+
 
   #mid {
+    width: 50%;
+    height: 100vh;
     background-color: rgb(238, 237, 237);
-    flex-grow: 4;
     border-style: groove;
     border-color: darkolivegreen;
+    box-shadow: 0 0 30px gray;
   }
 
   #right {
-    background-color: lightgrey;
-    flex-grow: 3;
+    width: 20%;
+    height: 80vh;
+    background-color: rgb(238, 237, 237);
+    border-style: groove;
+    border-color: darkolivegreen;
+    box-shadow: 0 0 30px gray;
   }
+
+
 
   body {
     background-color: lightgrey;
   }
 
   #searchbar {
+    float: right;
+    margin-top: 13px;
+    margin-right: 13px;
+  }
+
+  #foot {
+    height: 150px;
+    background-color:rgb(54, 51, 51);
+    padding: 30px;
     display: flex;
-    justify-content: right;
-    align-items: center;
-    margin-right: 20px;
+    justify-content: center;
+    text-align: center;
+    font-family: sans-serif;
+    background: linear-gradient(to top, black 0%, rgba(0, 0, 0, 0.738) 19%, rgba(0, 0, 0, 0.541) 34%, rgba(0, 0, 0, 0.382) 47%, rgba(0, 0, 0, 0.278) 56.5%, rgba(0, 0, 0, 0.194) 65%, rgba(0, 0, 0, 0.126) 73%, rgba(0, 0, 0, 0.075) 80.2%, rgba(0, 0, 0, 0.042) 86.1%, rgba(0, 0, 0, 0.021) 91%, rgba(0, 0, 0, 0.008) 95.2%, rgba(0, 0, 0, 0.002) 98.2%, transparent 100%);
+  }
+
+  footer {
+    color: rgb(225, 225, 225);
+    margin-top: auto;
   }
 
 </style>
@@ -145,13 +174,10 @@
         <a href="#">Link 3</a>
       </div>
     </div>
-  </div>
-
-  <h1>Epic Seven Project
     <div id="searchbar">
-      <input type="text" id="search" placeholder="Search google for...">
+      <input type="text" id="search" placeholder="Search google for..." autocomplete="off">
       <input type="button" id="click" value="Search!" />
-  
+
       <script>
         document.getElementById('click').onclick = function () {
           var box = document.getElementById('search');
@@ -159,19 +185,36 @@
         }
       </script>
     </div>
+  </div>
+
+  <h1>
+    Epic Seven Project
+    <aside id="rhead">
+    </aside>
   </h1>
 
 
   <div id="root">
-    <aside id="left">
 
+    <aside id="left">
+      
     </aside>
+
     <aside id="mid">
       News + Updates
     </aside>
+
     <aside id="right">
-      Recent
+      Recent Links
     </aside>
+
+  </div>
+
+  <div id="foot">
+    <footer>
+      <div>Author: Will Madison</div>
+      <div>Contact: madisowo@dukes.jmu.edu</div>
+    </footer>
   </div>
 
 </body>
