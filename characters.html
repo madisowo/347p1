@@ -9,7 +9,6 @@
 
 <!-- Nav Bar taken made with help from https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp -->
 <style>
-
   body {
     margin: 0;
     padding: 0;
@@ -47,9 +46,7 @@
     padding: 14px 16px;
     background-color: inherit;
     font-family: inherit;
-    /* Important for vertical align on mobile phones */
     margin: 0;
-    /* Important for vertical align on mobile phones */
   }
 
   /* Add a red background color to navbar links on hover */
@@ -105,18 +102,20 @@
   #root {
     display: flex;
     justify-content: space-around;
-    height: 100vh;
+    height: auto;
   }
 
 
 
   #mid {
     width: 50%;
-    height: 100vh;
+    height: auto;
     background-color: rgb(238, 237, 237);
     border-style: groove;
     border-color: darkolivegreen;
     box-shadow: 0 0 30px gray;
+    padding: 10px;
+    border-radius: 5px;
   }
 
   #right {
@@ -126,9 +125,37 @@
     border-style: groove;
     border-color: darkolivegreen;
     box-shadow: 0 0 30px gray;
+    border-radius: 5px;
   }
 
+  #mtext,
+  #rtext {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
+  h2 {
+    font-size: 2.3em;
+    font-family: sans-serif;
+    padding-bottom: 15px;
+    padding-top: 30px;
+    border-bottom: double orangered;
+  }
+
+  h3 {
+    font-size: 2em;
+    font-family: sans-serif;
+    padding-bottom: 15px;
+    padding-top: 30px;
+    border-bottom: double orangered;
+  }
+
+  p {
+    font-size: 1.5em;
+    border: darkslateblue solid;
+    border-radius: 10px;
+    padding: 15px;
+  }
 
   body {
     background-color: lightgrey;
@@ -142,7 +169,7 @@
 
   #foot {
     height: 150px;
-    background-color:rgb(54, 51, 51);
+    background-color: rgb(54, 51, 51);
     padding: 30px;
     display: flex;
     justify-content: center;
@@ -154,6 +181,65 @@
   footer {
     color: rgb(225, 225, 225);
     margin-top: auto;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  tr {
+    font-size: 1.5em;
+    padding: 15px;
+  }
+
+  td {
+    border: darkslateblue solid;
+    border-radius: 10px;
+  }
+
+  #cat {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: center;
+  }
+
+  img:not(.sel) {
+    display: inline-block;
+    height: 54px;
+    width: 114px;
+    margin-bottom: 10px;
+    border: solid darkslateblue 3px;
+    border-radius: 5px;
+  }
+
+  .sel {
+    display: inline-block;
+    vertical-align: middle;
+    height: 34px;
+    width: 34px;
+  }
+
+  figure {
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  figcaption {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 100%;
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: inline-block;
+    vertical-align: top;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    margin-left: 20px;
   }
 
 </style>
@@ -197,15 +283,206 @@
   <div id="root">
 
     <aside id="left">
-      
+
     </aside>
 
     <aside id="mid">
-      Characters
+      <div id="mtext">
+        <h2>Characters</h2>
+
+        <script>
+          function funcStar(pass) {
+            var bool = new Boolean(pass);
+            showAll();
+            var star = document.getElementsByName("star");
+            var len = star.length;
+            if (!star[0].checked) {
+              for (i = 0; i < len; i++) {
+                if (!star[i].checked) {
+                  var myClasses = document.getElementsByClassName(star[i].value);
+                  for (j = 0; j < myClasses.length; j++) {
+                    myClasses[j].style.display = "none";
+                  }
+                }
+              }
+            }
+            if (bool) {
+              funcColor(true);
+            }
+          }
+
+          function funcColor(stop) {
+            if (!stop) {
+              funcStar(false);
+            }
+            var color = document.getElementsByName("color");
+            var len = color.length;
+            if (!color[0].checked) {
+              for (i = 0; i < len; i++) {
+                if (!color[i].checked) {
+                  var myClasses = document.getElementsByClassName(color[i].value);
+                  for (j = 0; j < myClasses.length; j++) {
+                    myClasses[j].style.display = "none";
+                  }
+                }
+              }
+            }
+          }
+
+          function showAll() {
+            var all = document.getElementsByClassName("cha");
+            for (i = 0; i < all.length; i++) {
+              all[i].style.display = "block";
+            }
+          }
+
+        </script>
+
+        <div id="star-selector">
+          <label>
+            <input type="radio" id="three" name="star" value="all" onclick="funcStar(true)" checked> All
+          </label>
+          <label>
+            <input type="radio" name="star" value="three" onclick="funcStar(true);"> 3 Star
+          </label>
+          <label>
+            <input type="radio" name="star" value="four" onclick="funcStar(true);"> 4 Star
+          </label>
+          <label>
+            <input type="radio" name="star" value="five" onclick="funcStar(true);"> 5 Star
+          </label>
+        </div>
+        <br>
+        <div id="color-selector">
+          <label>
+            <input type="radio" id="all" name="color" value="all" onclick="funcColor(false)" checked> All
+          </label>
+          <label>
+            <input type="radio" id="red" name="color" value="red" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Fire.png" class="sel"></img>
+          </label>
+          <label>
+            <input type="radio" id="green" name="color" value="green" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Earth.png" class="sel"></img>
+          </label>
+          <label>
+            <input type="radio" id="blue" name="color" value="blue" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Ice.png" class="sel"></img>
+          </label>
+          <label>
+            <input type="radio" id="dark" name="color" value="dark" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Dark.png" class="sel"></img>
+          </label>
+          <label>
+            <input type="radio" id="light" name="color" value="light" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Light.png" class="sel"></img>
+          </label>
+        </div>
+        <br>
+
+        <div id="cat">
+          <figure class="cha red four">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/Achates-Character-Select.png"></img>
+            <figcaption>Achates</figcaption>
+          </figure>
+          <figure class="cha green three">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/adlay-character-select.png"></img>
+            <figcaption>Adlay</figcaption>
+          </figure>
+          <figure class="cha green three">
+            <img src="https://epic7x.com/wp-content/uploads/2019/10/Ains-character-select.png"></img>
+            <figcaption>Ains</figcaption>
+          </figure>
+          <figure class="cha blue three">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/Aither-character-select.png"></img>
+            <figcaption>Aither</figcaption>
+          </figure>
+          <figure class="cha green five">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/Alencia-Character-Select.png"></img>
+            <figcaption>Alencia</figcaption>
+          </figure>
+          <figure class="cha blue three">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/Alexa-character-select.png"></img>
+            <figcaption>Alexa</figcaption>
+          </figure>
+          <figure class="cha light five">
+            <img src="https://epic7x.com/wp-content/uploads/2020/01/Ambitious-Tywin-select.png"></img>
+            <figcaption>Ambitious Tywin</figcaption>
+          </figure>
+          <figure class="cha blue four">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/angelica.png"></img>
+            <figcaption>Angelica</figcaption>
+          </figure>
+          <figure class="cha dark five">
+            <img src="https://epic7x.com/wp-content/uploads/2019/07/apoc-ravi.png"></img>
+            <figcaption>Apocalypse Ravi</figcaption>
+          </figure>
+          <figure class="cha red five">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/c1048_l.png"></img>
+            <figcaption>Aramintha</figcaption>
+          </figure>
+          <figure class="cha dark five">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/Arbiter-Vildred-select.png"></img>
+            <figcaption>Arbiter Vildred</figcaption>
+          </figure>
+          <figure class="cha green four">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/armin.png"></img>
+            <figcaption>Armin</figcaption>
+          </figure>
+          <figure class="cha light three">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/arowell.png"></img>
+            <figcaption>Arowell</figcaption>
+          </figure>
+          <figure class="cha dark four">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/assassin-cartuja.png"></img>
+            <figcaption>Assassin Cartuja</figcaption>
+          </figure>
+          <figure class="cha dark four">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/assassin-cidd-face.png"></img>
+            <figcaption>Assassin Cidd</figcaption>
+          </figure>
+          <figure class="cha dark four">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/assassin-coli.png"></img>
+            <figcaption>Assassin Coli</figcaption>
+          </figure>
+          <figure class="cha dark four">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/auxiliary.png"></img>
+            <figcaption>Auxiliary Lots</figcaption>
+          </figure>
+          <figure class="cha red three">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/azalea.png"></img>
+            <figcaption>Azalea</figcaption>
+          </figure>
+          <figure class="cha red five">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/baal.png"></img>
+            <figcaption>Baal and Sezan</figcaption>
+          </figure>
+          <figure class="cha green five">
+            <img src="https://epic7x.com/wp-content/uploads/2019/04/baiken-2.png"></img>
+            <figcaption>Baiken</figcaption>
+          </figure>
+          <figure class="cha green five">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/basar.png"></img>
+            <figcaption>Basar</figcaption>
+          </figure>
+          <figure class="cha blue three">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/bask.png"></img>
+            <figcaption>Bask</figcaption>
+          </figure>
+          <figure class="cha dark three">
+            <img src="https://epic7x.com/wp-content/uploads/2019/10/batisse-1.png"></img>
+            <figcaption>Batisse</figcaption>
+          </figure>
+          <figure class="cha green five">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/bellona.png"></img>
+            <figcaption>Bellona</figcaption>
+          </figure>
+        </div>
+      </div>
+
     </aside>
 
     <aside id="right">
-      Recent Links
+      <div id="rtext">
+        <h2>Recent Links</h2>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet.</p>
+      </div>
     </aside>
 
   </div>
