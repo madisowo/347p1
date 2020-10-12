@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i].trim();
+            if (c.indexOf(name) == 0)
+                return c.substring(name.length, c.length);
+        }
+        return "";
+    }
+
+    function checkHistory(targetId) {
+        var history = getCookie("history");
+        var htmlContent = '';
+
+        if (history != "") {
+            var insert = true;
+            var sp = history.toString().split(",");
+            for (var i = sp.length - 1; i >= 0; i--) {
+                htmlContent += '<a style="color: white;" class="demo-pricing demo-pricing-1"  href="'
+                    + sp[i]
+                    + '">'
+                    + sp[i].substring(sp[i].lastIndexOf('/') + 1) + '</a><br>';
+                if (sp[i] == document.URL) {
+                    insert = false;
+                }
+                document.getElementById(targetId).innerHTML = htmlContent;
+            }
+            if (insert) {
+                sp.push(document.URL);
+            }
+            setCookie("history", sp.toString(), 30);
+        } else {
+            var stack = new Array();
+            stack.push(document.URL);
+            setCookie("history", stack.toString(), 30);
+        }
+    }
+</script>
+
+<style>
+    #recentPageViews {
+        background-color: lightsteelblue;
+    }
+</style>
+
+<body onload="checkHistory('recentPageViews');">
+    <h1>Test 3</h1>
+    <p><a href="test1.html">Test 1</a></p>
+    <p><a href="test2.html">Test 2</a></p>
+
+    <div id="recentPageViews"></div>
+
+</body>
+</html>
