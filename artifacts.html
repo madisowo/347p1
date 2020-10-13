@@ -9,7 +9,6 @@
 
 <!-- Nav Bar taken made with help from https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp -->
 <style>
-
   body {
     margin: 0;
     padding: 0;
@@ -99,25 +98,51 @@
     font-weight: 600;
   }
 
-  #rhead {
-    width: 20%;
-  }
-
   #root {
     display: flex;
     justify-content: space-around;
-    height: 100vh;
+    height: auto;
   }
 
 
 
   #mid {
     width: 70%;
-    height: 100vh;
+    height: auto;
     background-color: rgb(238, 237, 237);
     border-style: groove;
     border-color: darkolivegreen;
     box-shadow: 0 0 30px gray;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  #mtext {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  h2 {
+    font-size: 2.3em;
+    font-family: sans-serif;
+    padding-bottom: 15px;
+    padding-top: 30px;
+    border-bottom: double orangered;
+  }
+
+  h3 {
+    font-size: 2em;
+    font-family: sans-serif;
+    padding-bottom: 15px;
+    padding-top: 30px;
+    border-bottom: double orangered;
+  }
+
+  p {
+    font-size: 1.5em;
+    border: darkslateblue solid;
+    border-radius: 10px;
+    padding: 15px;
   }
 
   body {
@@ -132,7 +157,7 @@
 
   #foot {
     height: 150px;
-    background-color:rgb(54, 51, 51);
+    background-color: rgb(54, 51, 51);
     padding: 30px;
     display: flex;
     justify-content: center;
@@ -145,6 +170,79 @@
     color: rgb(225, 225, 225);
     margin-top: auto;
   }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  tr {
+    font-size: 1.5em;
+    padding: 15px;
+  }
+
+  td {
+    border: darkslateblue solid;
+    border-radius: 10px;
+  }
+
+  #cat {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: center;
+  }
+
+  img:not(.sel) {
+    display: inline-block;
+    width: 172px;
+    height: auto;
+    /* width: 100%;
+    height: auto; */
+    margin-bottom: 10px;
+    border: solid darkslateblue 3px;
+    border-radius: 22px;
+  }
+
+  #star-selector, #color-selector {
+    display: flex;
+    justify-content: center;
+  }
+
+  #star-selector > label {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .sel {
+    display: inline-block;
+    vertical-align:middle;
+    height: 34px;
+    width: 34px;
+  }
+
+  figure {
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  figcaption {
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 90%;
+    margin-bottom: 10px;
+  }
+
+  label {
+    display: inline-block;
+    vertical-align: top;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    margin-left: 20px;
+  }
+
+
 
 </style>
 
@@ -185,10 +283,387 @@
     </h1>
   </div>
 
+
   <div id="root">
 
+
     <aside id="mid">
-      Artifacts
+      <div id="mtext">
+        <h2>Artifacts</h2>
+
+        <script>
+          function funcStar(pass) {
+            var bool = new Boolean(pass);
+            showAll();
+            var star = document.getElementsByName("star");
+            var len = star.length;
+            if (!star[0].checked) {
+              for (i = 0; i < len; i++) {
+                if (!star[i].checked) {
+                  var myClasses = document.getElementsByClassName(star[i].value);
+                  for (j = 0; j < myClasses.length; j++) {
+                    myClasses[j].style.display = "none";
+                  }
+                }
+              }
+            }
+            if (bool) {
+              funcColor(true);
+            }
+          }
+
+          function funcColor(stop) {
+            if (!stop) {
+              funcStar(false);
+            }
+            var color = document.getElementsByName("color");
+            var len = color.length;
+            if (!color[0].checked) {
+              for (i = 0; i < len; i++) {
+                if (!color[i].checked) {
+                  var myClasses = document.getElementsByClassName(color[i].value);
+                  for (j = 0; j < myClasses.length; j++) {
+                    myClasses[j].style.display = "none";
+                  }
+                }
+              }
+            }
+          }
+
+          function showAll() {
+            var all = document.getElementsByClassName("cha");
+            for (i = 0; i < all.length; i++) {
+              all[i].style.display = "block";
+            }
+          }
+
+        </script>
+
+        <div id="star-selector">
+          <label>
+            <input type="radio" id="three" name="star" value="all" onclick="funcStar(true)" checked> All
+          </label>
+          <label>
+            <input type="radio" name="star" value="three" onclick="funcStar(true);"> 3 Star
+          </label>
+          <label>
+            <input type="radio" name="star" value="four" onclick="funcStar(true);"> 4 Star
+          </label>
+          <label>
+            <input type="radio" name="star" value="five" onclick="funcStar(true);"> 5 Star
+          </label>
+        </div>
+        <br>
+        <div id="color-selector">
+          <label>
+            <input type="radio" id="all" name="color" value="all" onclick="funcColor(false)" checked> All
+          </label>
+          <label>
+            <input type="radio" id="red" name="color" value="red" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Knight.png" class="sel"></img>
+          </label>
+          <label>
+            <input type="radio" id="green" name="color" value="green" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Warrior.png" class="sel"></img>
+          </label>
+          <label>
+            <input type="radio" id="blue" name="color" value="blue" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Mage.png" class="sel"></img>
+          </label>
+          <label>
+            <input type="radio" id="dark" name="color" value="dark" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Ranger.png" class="sel"></img>
+          </label>
+          <label>
+            <input type="radio" id="light" name="color" value="light" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Soul%20Weaver.png" class="sel"></img>
+          </label>
+          <label>
+            <input type="radio" id="light" name="color" value="light" onclick="funcColor(false);"><img src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Thief.png" class="sel"></img>
+          </label>
+        </div>
+        <br>
+
+        <div id="cat">
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/adamant-shield-e7.png"></img>
+            <figcaption>Adamant Shield</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/04/Alabastron.png"></img>
+            <figcaption>Alabastron</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/alexas-basket-e7.png"></img>
+            <figcaption>Alexa's Basket</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/alsacian-spear.png"></img>
+            <figcaption>Alsacian Spear</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/ancient-sheath.png"></img>
+            <figcaption>Ancient Sheath</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/01/andres-crossbow.png"></img>
+            <figcaption>Andre's Crossbow</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/aqua-rose.png"></img>
+            <figcaption>Aqua Rose</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/ascending-axe.png"></img>
+            <figcaption>Ascending Axe</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/atmas-portal.png"></img>
+            <figcaption>Atma's Portal</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/01/barthezs-orbuculum.png"></img>
+            <figcaption>Barthez's Orbuculum</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/09/bastion-of-perlutia.png"></img>
+            <figcaption>Bastion of Perlutia</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/03/black-hand-of-the-goddess.png"></img>
+            <figcaption>Black Hand of the Goddess</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/10/Blessings-of-Camaraderie.png"></img>
+            <figcaption>Blessings of Camaraderie</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/bloodstone.png"></img>
+            <figcaption>Bloodstone</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/10/bloody-rose.png"></img>
+            <figcaption>Bloody Rose</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/butterfly-mandolin.png"></img>
+            <figcaption>Butterfly Mandolin</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/celestine.png"></img>
+            <figcaption>Celestine</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/06/Cradle-of-Life.png"></img>
+            <figcaption>Cradle of Life</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/06/lOsfkGG.png"></img>
+            <figcaption>Crimson Seed</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/08/Crown-of-Glory.png"></img>
+            <figcaption>Crown of Glory</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/cursed-compass.png"></img>
+            <figcaption>Cursed Compass</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/daydream-joker.png"></img>
+            <figcaption>Daydream Joker</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/05/Doctors-Bag.png"></img>
+            <figcaption>Doctor's Bag</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/10/Double-Edged-Decrescent.png"></img>
+            <figcaption>Double-Edged Decrescent</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/durandal.png"></img>
+            <figcaption>Durandal</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/dust-devil.png"></img>
+            <figcaption>Dust Devil</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/elbris-ritual-sword.png"></img>
+            <figcaption>Elbris Ritual Sword</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/envoys-pipe.png"></img>
+            <figcaption>Envoy's Pipe</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/01/eternus.png"></img>
+            <figcaption>Eternus</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/eticas-scepter.png"></img>
+            <figcaption>Etica's Scepter</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/exorcists-tonfa.png"></img>
+            <figcaption>Exorcist's Tonfa</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/forest-totem.png"></img>
+            <figcaption>Forest Totem</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/grail-of-blood.png"></img>
+            <figcaption>Grail of Blood</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/hilag-lance-e7.png"></img>
+            <figcaption>Hilag Lance</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/holy-sacrifice.png"></img>
+            <figcaption>Holy Sacrifice</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/iron-fan-e7.png"></img>
+            <figcaption>Iron Fan</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/04/sol-badguy-artifact-full.png"></img>
+            <figcaption>Junkyard Dog</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/03/justice-for-all-1.png"></img>
+            <figcaption>Justice for All</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/labyrinth-cube.png"></img>
+            <figcaption>Labyrinth Cube</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/magaharas-tome-e7.png"></img>
+            <figcaption>Magahara's Tome</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/09/Manica-of-Control.png"></img>
+            <figcaption>Manica of Control</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/mighty-yaksha.png"></img>
+            <figcaption>Mighty Yaksha</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/noble-oath.png"></img>
+            <figcaption>Noble Oath</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/oath-key.png"></img>
+            <figcaption>Oath Key</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/05/portrait-of-the-saviors.png"></img>
+            <figcaption>Portrait of the Saviors</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/07/proof-of-valor.png"></img>
+            <figcaption>Proof of Valor</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/prophetic-candlestick.png"></img>
+            <figcaption>Prophetic Candlestick</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/ranon-e7.png"></img>
+            <figcaption>Ranon's Memorandum</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/08/Rise-of-a-Monarch.png"></img>
+            <figcaption>Rise of a Monarch</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/rod-of-amaryllis.png"></img>
+            <figcaption>Rod of Amaryllis</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/rosa-hargana-e7.png"></img>
+            <figcaption>Rosa Hargana</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/09/Samsara-Prayer-Beads.png"></img>
+            <figcaption>Samsara Prayer Beads</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/01/sepulcrum.png"></img>
+            <figcaption>Sepulcrum</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/09/Shepherd-of-the-Hollow.png"></img>
+            <figcaption>Shepherd of the Hollow</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/shimadra-staff.png"></img>
+            <figcaption>Shimadra Staff</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/sigurd-scythe-e7.png"></img>
+            <figcaption>Sigurd Scythe</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/sira-ren-e7.png"></img>
+            <figcaption>Sira-Ren</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/song-of-stars-e7.png"></img>
+            <figcaption>Song of Stars</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/11/stella-harpa.png"></img>
+            <figcaption>Stella Harpa</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/sterak-gauntlet-e7.png"></img>
+            <figcaption>Strak Gauntlet</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/03/LUPxqEU.png"></img>
+            <figcaption>Sword of Ezera</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/02/sword-of-judgement-1.png"></img>
+            <figcaption>Sword of Judgment</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/sword-of-the-morning.png"></img>
+            <figcaption>Sword of the Morning</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/05/tear-of-the-desert.png"></img>
+            <figcaption>Tear of the Desert</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/timeless-anchor.png"></img>
+            <figcaption>Timeless Anchor</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/12/Unfading-Memories.png"></img>
+            <figcaption>Unfading Memories</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2020/04/Victorious-Flag.png"></img>
+            <figcaption>Victorious Flag</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2019/01/violet-talisman-e7.png"></img>
+            <figcaption>Violet Talisman</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/waters-origin.png"></img>
+            <figcaption>Water's Origin</figcaption>
+          </figure>
+          <figure class="">
+            <img src="https://epic7x.com/wp-content/uploads/2018/12/wondrous-potion-vial.png"></img>
+            <figcaption>Wondrous Potion Vial</figcaption>
+          </figure>
+          
+        </div>
+      </div>
+
     </aside>
 
   </div>
