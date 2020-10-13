@@ -86,14 +86,17 @@
     display: block;
   }
 
-  h1 {
+  #p-title {
     display: flex;
     justify-content: space-around;
+  }
+
+  h1 {
+    width: 70%;
     font-family: sans-serif;
     font-family: 'Permanent Marker', cursive;
     font-size: 4em;
     font-weight: 600;
-    margin-left: 110px;
   }
 
   #rhead {
@@ -109,24 +112,13 @@
 
 
   #mid {
-    width: 50%;
+    width: 70%;
     height: 100vh;
     background-color: rgb(238, 237, 237);
     border-style: groove;
     border-color: darkolivegreen;
     box-shadow: 0 0 30px gray;
   }
-
-  #right {
-    width: 20%;
-    height: 80vh;
-    background-color: rgb(238, 237, 237);
-    border-style: groove;
-    border-color: darkolivegreen;
-    box-shadow: 0 0 30px gray;
-  }
-
-
 
   body {
     background-color: lightgrey;
@@ -185,25 +177,18 @@
     </div>
   </div>
 
-  <h1>
-    Epic Seven Project
-    <aside id="rhead">
-    </aside>
-  </h1>
-
+  <div id="p-title">
+    <h1>
+      Epic Seven Project
+      <aside id="rhead">
+      </aside>
+    </h1>
+  </div>
 
   <div id="root">
 
-    <aside id="left">
-      
-    </aside>
-
     <aside id="mid">
       Artifacts
-    </aside>
-
-    <aside id="right">
-      Recent Links
     </aside>
 
   </div>
