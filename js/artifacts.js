@@ -1,7 +1,17 @@
+window.onload=function() {
 
-document.getElementById('click').onclick = function () {
-    var box = document.getElementById('search');
-    window.location.href = 'http://www.google.com/search?q=' + escape(box.value);
+    const navigation = document.getElementById('mobile-nav');
+    const menuButton = document.getElementById('menu-button');
+
+    menuButton.addEventListener('click', () => {
+        navigation.classList.toggle('open');
+        event.stopPropagation();
+    });
+
+    document.addEventListener('click', () => {
+        navigation.classList.remove('open');
+    });
+
 }
 
 function funcStar(pass) {

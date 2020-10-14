@@ -41,6 +41,10 @@ margin: 0;
 /* Add a red background color to navbar links on hover */
 .navbar a:hover,
 .dropdown:hover .dropbtn {
+background-color: rgb(80,80,80);
+}
+
+.navbar a:active {
 background-color: red;
 }
 
@@ -74,6 +78,12 @@ background-color: #ddd;
 display: block;
 }
 
+#menu-button {
+margin: 30px;
+padding: 30px;
+display: none;
+}
+
 #p-title {
 display: flex;
 justify-content: space-around;
@@ -92,8 +102,6 @@ display: flex;
 justify-content: space-around;
 height: auto;
 }
-
-
 
 #mid {
 width: 70%;
@@ -136,12 +144,6 @@ padding: 15px;
 
 body {
 background-color: lightgrey;
-}
-
-#searchbar {
-float: right;
-margin-top: 13px;
-margin-right: 13px;
 }
 
 #foot {
@@ -234,7 +236,6 @@ width: 34px;
 
 figure {
 margin: 10px;
-cursor: pointer;
 }
 
 figcaption {
@@ -250,4 +251,93 @@ vertical-align: top;
 font-family: sans-serif;
 font-size: 1.5em;
 margin-left: 20px;
+}
+
+
+#mobile-nav {
+    display: none;
+}
+
+#mobile-nav > ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 1.5em;
+    background-color: #333;;
+}
+
+#mobile-nav > ul >li > a {
+    font-family: sans-serif;
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+}
+
+@media (max-width: 720px) {
+    .navbar {
+        display: none;
+    }
+
+    #mobile-nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        font-size: 1.5em;
+    }
+
+    #mobile-nav.open {
+        display: block;
+    }
+
+    #mobile-nav > ul > li {
+        border-top: 2px solid lightgray
+    }
+
+    #mobile-nav > ul > li > a:hover {
+        background-color: rgb(80,80,80);
+    }
+
+    #mobile-nav > ul > li > a:active {
+        background-color: red;
+    }
+
+    h1 {
+        width: 95%;
+        font-size: 8vw;
+        text-align: center;
+        padding: 8px;
+        color: white;
+    }
+
+    #mid {
+        width: 95%;
+    }
+
+    #menu-button {
+        padding: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    #menu-button:hover {
+        background-color: rgb(80, 80, 80);
+
+    }
+
+    #p-title {
+        background-color: #333;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: sticky;
+        left: 0;
+        right: 0;
+        top: 0;
+        padding: 0px;
+    }
+
 }
