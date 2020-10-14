@@ -196,7 +196,7 @@ border-radius: 22px;
 }
 
 #star-selector,
-#color-selector {
+#class-selector {
 display: flex;
 justify-content: center;
 }

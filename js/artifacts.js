@@ -20,20 +20,20 @@ function funcStar(pass) {
         }
     }
     if (bool) {
-        funcColor(true);
+        funcClass(true);
     }
 }
 
-function funcColor(stop) {
+function funcClass(stop) {
     if (!stop) {
         funcStar(false);
     }
-    var color = document.getElementsByName("color");
-    var len = color.length;
-    if (!color[0].checked) {
+    var arti = document.getElementsByName("class");
+    var len = arti.length;
+    if (!arti[0].checked) {
         for (i = 0; i < len; i++) {
-            if (!color[i].checked) {
-                var myClasses = document.getElementsByClassName(color[i].value);
+            if (!arti[i].checked) {
+                var myClasses = document.getElementsByClassName(arti[i].value);
                 for (j = 0; j < myClasses.length; j++) {
                     myClasses[j].style.display = "none";
                 }
@@ -43,7 +43,7 @@ function funcColor(stop) {
 }
 
 function showAll() {
-    var all = document.getElementsByClassName("cha");
+    var all = document.getElementsByClassName("art");
     for (i = 0; i < all.length; i++) {
         all[i].style.display = "block";
     }
