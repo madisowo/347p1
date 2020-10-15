@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Characters</title>
   <link href="../css/characters.css" type="text/css" rel="stylesheet">
-  <link href="../css/shared.css" type="text/css" rel="stylesheet">
   <link rel="icon" type="image/ico" href="../images/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
   <script src="../js/characters.js"></script>
@@ -61,7 +60,7 @@
       <div id="mtext">
         <h2>Characters</h2>
 
-        <form id="star-selector">
+        <div id="star-selector">
           <label>
             <input type="radio" id="three" name="star" value="all" onclick="funcStar(true)" checked> All
           </label>
@@ -74,9 +73,9 @@
           <label>
             <input type="radio" name="star" value="five" onclick="funcStar(true);"> 5 Star
           </label>
-        </form>
+        </div>
         <br>
-        <form id="color-selector">
+        <div id="color-selector">
           <label>
             <input type="radio" id="all" name="color" value="all" onclick="funcColor(false)" checked> All
           </label>
@@ -105,10 +104,10 @@
               src="https://epic7x.com/wp-content/themes/epic7x/assets/img/Light.png" alt="light color selector"
               class="sel">
           </label>
-        </form>
+        </div>
         <br>
 
-        <div id="characters">
+        <div id="cat">
           <figure class="cha red four">
             <img src="https://epic7x.com/wp-content/uploads/2019/01/Achates-Character-Select.png"
               alt="achates character image">
