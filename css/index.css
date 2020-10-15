@@ -153,8 +153,7 @@ color: rgb(225, 225, 225);
 margin-top: auto;
 }
 
-
-#banners {
+div.banners {
 display: flex;
 justify-content: space-around;
 align-items: center;
@@ -166,7 +165,7 @@ border-bottom: solid lightgray;
 
 }
 
-#ban {
+img.ban {
 width: 190px;
 height: auto;
 border: solid darkslateblue 3px;
@@ -195,6 +194,14 @@ background-color: lightgoldenrodyellow;
 
 .dark {
 background-color: rgb(253, 204, 255);
+}
+
+a {
+font-size: 2em;
+}
+
+li {
+margin-bottom: 10px;
 }
 
 #mobile-nav {

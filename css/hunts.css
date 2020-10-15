@@ -207,7 +207,7 @@ figure {
 margin: 10px;
 }
 
-#chars {
+div.chars {
 display: flex;
 flex-direction: row;
 justify-content: center;

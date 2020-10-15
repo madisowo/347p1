@@ -164,7 +164,7 @@ color: rgb(225, 225, 225);
 margin-top: auto;
 }
 
-#cat {
+#comm, #rare {
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
