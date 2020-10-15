@@ -176,8 +176,6 @@ img:not(.sel) {
 display: inline-block;
 width: 172px;
 height: auto;
-/* width: 100%;
-height: auto; */
 margin-bottom: 10px;
 border: solid darkslateblue 3px;
 border-radius: 8px;
