@@ -176,7 +176,7 @@ border: darkslateblue solid;
 border-radius: 10px;
 }
 
-#cat {
+#chars {
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
