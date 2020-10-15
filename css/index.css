@@ -196,10 +196,6 @@ background-color: lightgoldenrodyellow;
 background-color: rgb(253, 204, 255);
 }
 
-a {
-font-size: 2em;
-}
-
 li {
 margin-bottom: 10px;
 }
@@ -287,6 +283,10 @@ margin-bottom: 10px;
         right: 0;
         top: 0;
         padding: 0px;
+    }
+
+    div.banners {
+        font-size: 3vw;
     }
 
 }
